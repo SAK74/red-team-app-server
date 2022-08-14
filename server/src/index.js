@@ -8,6 +8,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.all("/", (req, res) => {
-  res.status(200).json({ test: "something" });
+  try {
+    res.status(200).json({ test: "something" });
+  } catch (err) {
+    res.status(500).send("Server error");
+  }
 });
 app.listen(PORT, () => console.log(`App listening in port ${PORT}`));
