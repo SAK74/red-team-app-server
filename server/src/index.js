@@ -3,7 +3,7 @@ const cors = require('cors');
 
 const PORT = 4000; 
 const corsOptions = {
-    origin: ["http://localhost:3000", "http://192.168.0.56"]
+    origin: true //["http://localhost:3000", "http://192.168.0.56"]
 };
 app.use(cors(corsOptions));
 
