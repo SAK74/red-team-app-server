@@ -7,7 +7,7 @@ const corsOptions = {
   origin: true, //["http://localhost:3000", "http://192.168.0.56"]
 };
 app.use(cors(corsOptions));
-app.use(express.static("public"));
+// app.use(express.static("public"));
 app.all("/", (req, res) => {
   try {
     res.status(200).json({ test: "something" });
