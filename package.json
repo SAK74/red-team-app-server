@@ -4,9 +4,8 @@
   "description": "",
   "main": "server/src/index.js",
   "scripts": {
-    "dev": "nodemon server/src/index.js",
-    "start": "node server/src/index.js",
-    "install-all": "npm i && npm i --prefix ./server",
+    "dev": "nodemon index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +20,9 @@
   "homepage": "https://github.com/SAK74/simple-server#readme",
   "devDependencies": {
     "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
   }
 }
