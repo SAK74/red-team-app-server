@@ -2,7 +2,7 @@ const router = require('express').Router();
 const base64decode = require("../services/base64decode");
 require("dotenv").config();
 
-router.get((req, resp) => {
+router.get("/", (req, resp) => {
    if (!req.headers.authorization) {
       resp.status(401).send("Wrong authorization method");
    } else {
