@@ -9,7 +9,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.all("/", (req, res) => {
   try {
-    res.status(200).send("ok");
+    res.status(200).send(process.env);
   } catch (err) {
     res.status(500).send("Server error");
   }
