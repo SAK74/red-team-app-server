@@ -4,7 +4,6 @@ function base64decode(param) {
    }
    const buff = new Buffer.from(param, "base64");
    const decoded = buff.toString("ascii").split(":");
-   console.log("decoded: ", decoded);
    return decoded;
 }
 

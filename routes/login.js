@@ -1,16 +1,23 @@
 const router = require('express').Router();
 const base64decode = require("../services/base64decode");
+require("dotenv").config();
 
 router.use((req, resp) => {
-   console.log(process.env);
-   const [auMethot, auData] = req.headers.authorization.split(" ");
-   // console.log(auMethot, auData);
-   if (auMethot !== "Basic") {
-      resp.status(401).end();
+   if (!req.headers.authorization) {
+      resp.status(401).send("Wrong authorization method");
    } else {
-      const [user, passw] = base64decode(auData);
-      console.log(user, passw);
-      resp.status(200).cookie("token", "sometoken", { httpOnly: true }).send({ token: "bodytoken" });
+      const [auMethot, auData] = req.headers.authorization.split(" ");
+      if (auMethot !== "Basic") {
+         resp.status(401).send("Wrong authorization method");
+      }
+      else {
+         const [user, passw] = base64decode(auData);
+         console.log(user, passw);
+         if (match = passw === process.env.APP_PASSWORD) {
+            resp.cookie("token", "sometoken", { httpOnly: true });
+         }
+         resp.send(match ? user : "").end();
+      }
    }
-})
+});
 module.exports = router;
